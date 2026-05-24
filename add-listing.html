@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Header-Style-and-footer.css">
+    <link rel="stylesheet" href="Form-Style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html">ImobiliarePro</a>
+            <nav class="main-nav">
+                <a href="Listing.html">Acasă</a>
+                <a href="index.html">Anunțuri</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="add-listing.html">Adaugă anunț</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container listings">
+            <h2>Adaugă anunț</h2>
+            <Form id ="addListingForm" class="Form">
+                <input id ="Title" type="text" placeholder="Titlu anunț">
+                <textarea id="Description" type="text" placeholder="Descriere"></textarea>
+                <div>
+                <input id="Price" type="number" placeholder="Preț (€)" min="0">
+                <input id="Address" type="text" placeholder="Adresă">
+                </div>
+                <div>
+                <select>
+                    <option value="">Tip</option>
+                    <option value="apartament">Apartament</option>
+                    <option value="casa">Casă</option>
+                </select>   
+                <input id="Bedrooms" type="number" placeholder="Camere" min="1">
+                </div>
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+                <button class="btn-sub" type="submit">Publică anunț</button>
+            </Form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <small>© 2026 ImobiliarePro — Toate drepturile rezervate</small>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

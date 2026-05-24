@@ -1,0 +1,71 @@
+form input,
+form textarea,
+form select,
+form button {
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 0.75rem;
+  margin-top: 0.6rem;
+  height: 50px;
+  
+}
+form{
+    background-color: rgba(250, 235, 215, 0.514);
+    margin: 10px;
+}
+form input  {
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #d6d8df;
+    border-radius: 6px;
+    width: 400px;
+    border-style: double;
+}
+form #Price,
+form #Address {
+    display: inline-block;
+    width: 200px;
+    vertical-align: top;
+}
+form #Bedrooms
+,form select{
+    display :inline-block;
+    width: 200px;
+    
+
+}
+form select{
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #d6d8df;
+    border-radius: 6px;
+    border-style: double;
+}
+form #Bedrooms{
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #d6d8df;
+    border-radius: 6px;
+    
+    border-style: double;
+}
+form #Description{
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #d6d8df;
+    border-radius: 6px;
+    width: 400px;
+    height: 100px;
+    max-width: 400px;
+    max-height: 200px;
+    border-style: double;   
+    text-align: left;
+    vertical-align: text-top;
+    
+
+
+}
+form #Title{
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #d6d8df;
+    border-radius: 6px;
+    width: 200px;
+    border-style: double; 
+    max-width: 400px;  
+}
