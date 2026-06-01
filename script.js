@@ -1,20 +1,36 @@
-var img_urls= "C:\\Users\\nelut\\OneDrive\\Documents\\Proiect-Web-\\apartamen.jpg";
-const listings = [
-  {id:1,title:'Apartament modern, 3 cam',price:72000,location:'București - Floreasca',type:'apartament',rooms:3,img:'${img_urls}'},
-  {id:2,title:'Casă cu grădină',price:125000,location:'Cluj-Napoca - Gheorgheni',type:'casa',rooms:4,img:'${img_urls}'},
-  {id:3,title:'Garsonieră centrală',price:38000,location:'Iași - Copou',type:'apartament',rooms:1,img:'${img_urls}'},
-  {id:4,title:'Vilă spațioasă',price:245000,location:'Timișoara - Giroc',type:'casa',rooms:5,img:'${img_urls}'},
-  {id:5,title:'Apartament în bloc nou',price:98000,location:'Brașov - Tractorul',type:'apartament',rooms:2,img:'${img_urls}'},
-  {id:6,title:'Casă la periferie',price:67000,location:'Constanța - Agigea',type:'casa',rooms:3,img:'${img_urls}'}
-];
+let listings = [];
+
+function loadListings() {
+  return fetch('apartamente.json')
+    .then(resp => {
+      if (!resp.ok) throw new Error('Could not load apartamente.json');
+      return resp.json();
+    })
+    .then(data => {
+      if (!Array.isArray(data)) throw new Error('JSON is not an array');
+      listings = data;
+      return listings;
+    })
+    .catch(err => {
+      console.error('Error loading listings:', err);
+      listings = [];
+      return listings;
+    });
+}
 
 function formatPrice(v){return v.toLocaleString('ro-RO') + ' €'}
+
+function getListingById(id) {
+  return listings.find(item => item.id === id);
+}
 
   function renderCard(item){
   const div = document.createElement('article');
   div.className = 'card';
   div.innerHTML = `
-    <img src="${img_urls}" alt="${item.title}">
+    <a href="ProductPage.html?id=${item.id}">
+      <img src="${item.img}" alt="${item.title}">
+    </a>
     <div class="card-body">
       <div class="price">${formatPrice(item.price)}</div>
       <div class="meta">${item.title} • ${item.location}</div>
@@ -53,6 +69,7 @@ function initSearch(){
 
 function initSubscribe(){
   const f = document.getElementById('subscribeForm');
+  if (!f) return;
   f.addEventListener('submit', e=>{
     e.preventDefault();
     const email = document.getElementById('email').value;
@@ -62,10 +79,86 @@ function initSubscribe(){
   });
 }
 
+function initProductPage() {
+  const titleEl = document.getElementById('productTitle');
+  if (!titleEl) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const id = Number(params.get('id'));
+  const listing = getListingById(id) || listings[0];
+  buildGallery(listing);
+  document.getElementById('productTitle').textContent = listing.title;
+  document.getElementById('productPrice').textContent = formatPrice(listing.price);
+  document.getElementById('productLocation').textContent = listing.location;
+  document.getElementById('productDescription').textContent = listing.description;
+  document.getElementById('productRooms').textContent = `${listing.rooms} camere`;
+  document.getElementById('productType').textContent = listing.type === 'casa' ? 'Casă' : 'Apartament';
+  document.title = `ImobiliarePro — ${listing.title}`;
+}
+
+function buildGallery(listing) {
+  const gallery = document.getElementById('productGallery');
+  if (!gallery) return;
+  const slidesContainer = gallery.querySelector('.gallery-slides');
+  const thumbsContainer = document.getElementById('galleryThumbs');
+  slidesContainer.innerHTML = '';
+  thumbsContainer.innerHTML = '';
+
+  const images = (Array.isArray(listing.images) && listing.images.length) ? listing.images : (listing.img ? [listing.img] : []);
+  if (!images.length) return;
+
+  images.forEach((src, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'slide';
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = `${listing.title} - ${i+1}`;
+    slide.appendChild(img);
+    slidesContainer.appendChild(slide);
+
+    const thumb = document.createElement('img');
+    thumb.className = 'thumb';
+    thumb.src = src;
+    thumb.alt = `Thumb ${i+1}`;
+    thumb.dataset.index = i;
+    thumb.addEventListener('click', () => showSlide(i));
+    thumbsContainer.appendChild(thumb);
+  });
+
+  let current = 0;
+  const slides = () => slidesContainer.querySelectorAll('.slide');
+  const thumbs = () => thumbsContainer.querySelectorAll('.thumb');
+
+  function showSlide(n) {
+    const s = slides();
+    const t = thumbs();
+    if (!s.length) return;
+    current = ((n % s.length) + s.length) % s.length;
+    s.forEach((el, idx) => el.classList.toggle('active', idx === current));
+    t.forEach((el, idx) => el.classList.toggle('active', idx === current));
+  }
+
+  const prevBtn = gallery.querySelector('.gallery-btn.prev');
+  const nextBtn = gallery.querySelector('.gallery-btn.next');
+  prevBtn.onclick = () => showSlide(current - 1);
+  nextBtn.onclick = () => showSlide(current + 1);
+
+  // autoplay
+  let autoplay = setInterval(() => showSlide(current + 1), 4000);
+  gallery.addEventListener('mouseenter', () => clearInterval(autoplay));
+  gallery.addEventListener('mouseleave', () => { autoplay = setInterval(() => showSlide(current + 1), 4000); });
+
+  showSlide(0);
+}
+
 document.addEventListener('DOMContentLoaded', ()=>{
-  // featured = first 3
-  renderListings('featured', listings.slice(0,3));
-  renderListings('listingsGrid', listings.slice(0));
-  initSearch();
-  initSubscribe();
+  // load data then initialize UI
+  loadListings().then(() => {
+    // featured = first 3
+    renderListings('featured', listings.slice(0,3));
+    renderListings('listingsGrid', listings.slice(0));
+    initSearch();
+    initSubscribe();
+    initProductPage();
+  });
 });

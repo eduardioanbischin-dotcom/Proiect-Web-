@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ImobiliarePro — Anunț</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product.css">
+    <script src= "ProductScript.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html">ImobiliarePro</a>
+            <nav class="main-nav">
+                <a href="Listing.html">Acasă</a>
+                <a href="index.html">Anunțuri</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="add-listing.html">Adaugă anunț</a>
+            </nav>
+        </div>
+    </header>
+
+        <main class="container product-page">
+                <a class="back-link" href="index.html">Înapoi la listări</a>
+
+                <section class="product-layout">
+                     <div id="productGallery" class="product-gallery">
+                         <div class="gallery-main">
+                             <button class="gallery-btn prev" aria-label="Previous">‹</button>
+                             <div class="gallery-slides">
+                                    <img id="galleryImage" src="apartamen.jpg" alt="Imagini anunț" class="gallery-image">
+                                     <img id="galleryImage" src="apartamen.jpg" alt="Imagini anunț" class="gallery-image">
+                             </div>
+                             <button class="gallery-btn next" aria-label="Next">›</button>
+                         </div>
+                         <div id="galleryThumbs" class="gallery-thumbs"></div>
+                     </div>
+                        <div class="product-summary">
+                <p class="product-kicker">Detaliu anunț</p>
+                <h1 id="productTitle">Titlu anunț</h1>
+                <p id="productLocation" class="product-location"></p>
+                <div id="productPrice" class="product-price"></div>
+                <p id="productDescription" class="product-description"></p>
+
+                <div class="product-tags">
+                    <span id="productRooms" class="tag"></span>
+                    <span id="productType" class="tag"></span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <small>© 2026 ImobiliarePro — Toate drepturile rezervate</small>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
