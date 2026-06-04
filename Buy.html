@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ImobiliarePro — Anunțuri</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="#">ImobiliarePro</a>
+            <nav class="main-nav">
+                <a href="index.html">Acasă</a>
+                <a href="Buy.html">Anunțuri</a>
+                <a href="#contact">Contact</a>
+                <a href="add-listing.html">Adauga anunț</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Caută-ți locuința ideală</h1>
+            <p class="lead">Vânzări, închirieri și oferte recomandate în toată țara.</p>
+            <form id="searchForm" class="search-form">
+                <input id="qLocation" type="text" placeholder="Oraș, cartier sau adresă">
+                
+                <select id="qType">
+                    <option value="any">Tip: Orice</option>
+                    <option value="apartament">Apartament</option>
+                    <option value="casa">Casă</option>
+                </select>
+                <input id="qRooms" type="number" placeholder="Camere" min="1">
+                <input id="qMin" type="number" placeholder="Min (€)" min="0">
+                <input id="qMax" type="number" placeholder="Max (€)" min="0">
+                <button type="submit" class="btn">Caută</button>
+            </form>
+        </div>
+    </section>
+
+    <main>
+        <section class="container featured">
+            <h2>Oferte recomandate</h2>
+            <div id="featured" class="card-grid"></div>
+        </section>
+
+        <section id="listings" class="container listings">
+            <h2>Ultimele anunțuri</h2>
+            <div id="listingsGrid" class="card-grid"></div>
+        </section>
+
+        <section id="contact" class="container contact">
+            <h2>Abonează-te la noutăți</h2>
+            <form id="subscribeForm" class="subscribe-form">
+                <input id="email" type="email" placeholder="Adresa ta de email">
+                <button class="btn-sub" type="submit">Abonează-te</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <small>© 2026 ImobiliarePro — Toate drepturile rezervate</small>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+</body>
+</html>

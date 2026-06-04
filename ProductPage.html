@@ -1,55 +1,80 @@
 <!doctype html>
 <html lang="ro">
-<head>
+    <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ImobiliarePro — Anunț</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="product.css">
-    <script src= "ProductScript.js"></script>
+    <link rel="stylesheet" href="Header-Style-and-footer.css">
 </head>
 <body>
     <header class="site-header">
         <div class="container header-inner">
             <a class="logo" href="index.html">ImobiliarePro</a>
             <nav class="main-nav">
-                <a href="Listing.html">Acasă</a>
-                <a href="index.html">Anunțuri</a>
+                <a href="index.html">Acasă</a>
+                <a href="Buy.html">Anunțuri</a>
                 <a href="index.html#contact">Contact</a>
                 <a href="add-listing.html">Adaugă anunț</a>
             </nav>
         </div>
     </header>
 
-        <main class="container product-page">
-                <a class="back-link" href="index.html">Înapoi la listări</a>
-
-                <section class="product-layout">
-                     <div id="productGallery" class="product-gallery">
-                         <div class="gallery-main">
-                             <button class="gallery-btn prev" aria-label="Previous">‹</button>
-                             <div class="gallery-slides">
-                                    <img id="galleryImage" src="apartamen.jpg" alt="Imagini anunț" class="gallery-image">
-                                     <img id="galleryImage" src="apartamen.jpg" alt="Imagini anunț" class="gallery-image">
-                             </div>
-                             <button class="gallery-btn next" aria-label="Next">›</button>
-                         </div>
-                         <div id="galleryThumbs" class="gallery-thumbs"></div>
-                     </div>
-                        <div class="product-summary">
-                <p class="product-kicker">Detaliu anunț</p>
-                <h1 id="productTitle">Titlu anunț</h1>
-                <p id="productLocation" class="product-location"></p>
-                <div id="productPrice" class="product-price"></div>
-                <p id="productDescription" class="product-description"></p>
-
-                <div class="product-tags">
-                    <span id="productRooms" class="tag"></span>
-                    <span id="productType" class="tag"></span>
-                </div>
+        <section class="hero">
+            <div class="container">
+                <h1>Detaliu anunț</h1>
+                <p class="lead">Vezi informațiile complete și contact pentru acest anunț.</p>
             </div>
         </section>
-    </main>
+
+        <main class="container product-page">
+            <nav class="breadcrumbs">
+                <a href="Buy.html">Listări</a> › <span id="crumbTitle">Detaliu anunț</span>
+            </nav>
+
+            <section class="product-layout">
+                <div id="productGallery" class="product-gallery">
+                    <div class="gallery-main">
+                        <button class="gallery-btn prev" aria-label="Previous">‹</button>
+                        <div class="gallery-slides" id="gallerySlides"></div>
+                        <button class="gallery-btn next" aria-label="Next">›</button>
+                    </div>
+                    <div id="galleryThumbs" class="gallery-thumbs"></div>
+                </div>
+                <div class=" agent-contact">
+                    <h3>Contact agent</h3>
+                    <img id="agentPhoto" src="" alt="Agent photo" class="agent-photo">
+                    <p id="agent-name" class="agent-name"></p>
+                    <p id = "agent position" class="agent-position"></p>
+                    <p id="agentPhone" class="agent-phone"></p>
+                   <p id="agentEmail" class="agent-email"></p>
+                </div>
+                <div class="product-summary">
+                    <p class="product-kicker"></p>
+                    <h1 id="productTitle"></h1>
+                    <div id="productPrice" class="product-price"></div>
+                    <div class="product-tags">
+                        <span id="productRooms" class="tag"></span>
+                        <span id="productType" class="tag"></span>
+                    </div>
+                    <p id="productLocation" class="product-location"></p>
+                    <p id="productDescription" class="product-description"></p>
+
+                <button id="contactSeller" class="btn">Contactează vânzătorul</button>
+
+                </div>
+            </section>
+        </main>
+
+    <!-- Lightbox for fullscreen image viewing -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button class="lightbox-close" aria-label="Close">✕</button>
+        <button class="lightbox-prev" aria-label="Previous">‹</button>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="">
+        </div>
+        <button class="lightbox-next" aria-label="Next">›</button>
+    </div>
 
     <footer class="site-footer">
         <div class="container">

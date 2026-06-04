@@ -69,3 +69,6 @@ form #Title{
     border-style: double; 
     max-width: 400px;  
 }
+
+.image-preview{display:flex;gap:0.5rem;margin-top:0.5rem}
+.preview-thumb{width:84px;height:64px;object-fit:cover;border-radius:6px;border:1px solid #ddd}

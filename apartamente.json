@@ -50,8 +50,8 @@
     "location": "Brașov - Tractorul",
     "type": "apartament",
     "rooms": 2,
-    "img": "apartament.jpg",
-    "images": ["apartament.jpg","apartament.jpg"],
+    "img": "apartamen.jpg",
+    "images": ["apartamen.jpg","apartamen.jpg"],
     "description": "Locuință într-un ansamblu nou, ideală pentru mutare rapidă."
   },
   {
@@ -62,7 +62,7 @@
     "type": "casa",
     "rooms": 3,
     "img": "casa.jpg",
-    "images": ["casa.jpg","casa.jpg"],
+    "images": ["apartamen.jpg","apartamen.jpg"],
     "description": "Casă accesibilă, cu potențial bun pentru renovare sau extindere."
   }
 ]

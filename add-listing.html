@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ImobiliarePro — Adaugă anunț</title>
     <link rel="stylesheet" href="Header-Style-and-footer.css">
     <link rel="stylesheet" href="Form-Style.css">
 </head>
@@ -24,24 +24,26 @@
     <main>
         <section class="container listings">
             <h2>Adaugă anunț</h2>
-            <Form id ="addListingForm" class="Form">
-                <input id ="Title" type="text" placeholder="Titlu anunț">
-                <textarea id="Description" type="text" placeholder="Descriere"></textarea>
+            <form id="addListingForm" class="Form">
+                <input id="title" type="text" placeholder="Titlu anunț" required>
+                <textarea id="description" placeholder="Descriere" required></textarea>
                 <div>
-                <input id="Price" type="number" placeholder="Preț (€)" min="0">
-                <input id="Address" type="text" placeholder="Adresă">
+                    <input id="price" type="number" placeholder="Preț (€)" min="0" required>
+                    <input id="location" type="text" placeholder="Adresă" required>
                 </div>
                 <div>
-                <select>
-                    <option value="">Tip</option>
-                    <option value="apartament">Apartament</option>
-                    <option value="casa">Casă</option>
-                </select>   
-                <input id="Bedrooms" type="number" placeholder="Camere" min="1">
+                    <select id="type">
+                        <option value="">Tip</option>
+                        <option value="apartament">Apartament</option>
+                        <option value="casa">Casă</option>
+                    </select>
+                    <input id="rooms" type="number" placeholder="Camere" min="1" required>
                 </div>
-                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+                <label for="images">Imagini (poți selecta mai multe)</label>
+                <input type="file" id="images" name="images" accept="image/*" multiple />
+                <div id="imagePreview" class="image-preview"></div>
                 <button class="btn-sub" type="submit">Publică anunț</button>
-            </Form>
+            </form>
         </section>
     </main>
 

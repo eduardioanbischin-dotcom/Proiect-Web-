@@ -1,37 +1,21 @@
-let listings = [];
-let currentLightboxImages = [];
-let lightboxIndex = 0;
+function initProductPage() {
+  const titleEl = document.getElementById('productTitle');
+  if (!titleEl) return;
 
-function loadListings() {
-  return fetch('apartamente.json')
-    .then(resp => {
-      if (!resp.ok) throw new Error('Could not load apartamente.json');
-      return resp.json();
-    })
-    .then(data => {
-      if (!Array.isArray(data)) throw new Error('JSON is not an array');
-      // merge with any user-added listings stored in localStorage
-      const user = JSON.parse(localStorage.getItem('userListings') || '[]');
-      listings = data.concat(user);
-      return listings;
-    })
-    .catch(err => {
-      console.error('Error loading listings:', err);
-      // fallback to user listings if JSON failed
-      const user = JSON.parse(localStorage.getItem('userListings') || '[]');
-      listings = user;
-      return listings;
-    });
+  const params = new URLSearchParams(window.location.search);
+  const id = Number(params.get('id'));
+  const listing = getListingById(id) || listings[0];
+  buildGallery(listing);
+  document.getElementById('productTitle').textContent = listing.title;
+  document.getElementById('productPrice').textContent = formatPrice(listing.price);
+  document.getElementById('productLocation').textContent = listing.location;
+  document.getElementById('productDescription').textContent = listing.description;
+  document.getElementById('productRooms').textContent = `${listing.rooms} camere`;
+  document.getElementById('productType').textContent = listing.type === 'casa' ? 'Casă' : 'Apartament';
+  document.title = `ImobiliarePro — ${listing.title}`;
 }
-
-function formatPrice(v){return v.toLocaleString('ro-RO') + ' €'}
-
-function getListingById(id) {
-  return listings.find(item => item.id == id);
-}
-
   function renderCard(item){
-  const div = document.createElement('article');
+  const div = document.createElement('product-layout');
   div.className = 'card';
   div.innerHTML = `
     <a href="ProductPage.html?id=${item.id}">
@@ -44,70 +28,6 @@ function getListingById(id) {
   `;
   return div;
 }
-
-function renderListings(targetId, data){
-  const container = document.getElementById(targetId);
-  if(!container) return;
-  container.innerHTML = '';
-  if(!data.length) container.innerHTML = '<p>Nu s-au găsit rezultate.</p>';
-  data.forEach(item => container.appendChild(renderCard(item)));
-}
-
-function initSearch(){
-  const form = document.getElementById('searchForm');
-  if (!form) return;
-  form.addEventListener('submit', e=>{
-    e.preventDefault();
-    const location = document.getElementById('qLocation').value.toLowerCase();
-    const type = document.getElementById('qType').value;
-    const rooms = Number(document.getElementById('qRooms').value) || 0;
-    const min = Number(document.getElementById('qMin').value) || 0;
-    const max = Number(document.getElementById('qMax').value) || Infinity;
-    const results = listings.filter(l=>{
-      const matchLoc = !location || l.location.toLowerCase().includes(location);
-      const matchType = type === 'any' || l.type === type;
-      const matchPrice = l.price >= min && l.price <= max;
-      const matchRooms = rooms == 0 || l.rooms ==rooms;
-      return matchLoc && matchType && matchPrice&& matchRooms;
-    });
-    renderListings('listingsGrid', results);
-    window.location.hash = '#listings';
-  });
-}
-
-function initSubscribe(){
-  const f = document.getElementById('subscribeForm');
-  if (!f) return;
-  f.addEventListener('submit', e=>{
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    if(!email) return alert('Introdu o adresă de email.');
-    alert('Mulțumim! Te-ai abonat cu: ' + email);
-    f.reset();
-  });
-}
-
-function initProductPage() {
-  const titleEl = document.getElementById('productTitle');
-  if (!titleEl){ 
-    console.log('Product title element not found');return;}
-
-  const params = new URLSearchParams(window.location.search);
-  const id = Number(params.get('id'));
-  const listing = getListingById(id) || listings[0];
-  if(!listing) {
-    console.log('Listing not found');return;
-  }
-  buildGallery(listing);
-  document.getElementById('productTitle').textContent = listing.title;
-  document.getElementById('productPrice').textContent = formatPrice(listing.price);
-  document.getElementById('productLocation').textContent = listing.location;
-  document.getElementById('productDescription').textContent = listing.description;
-  document.getElementById('productRooms').textContent = `${listing.rooms} camere`;
-  document.getElementById('productType').textContent = listing.type === 'casa' ? 'Casă' : 'Apartament';
-  document.title = `ImobiliarePro — ${listing.title}`;
-}
-
 function buildGallery(listing) {
   const gallery = document.getElementById('productGallery');
   if (!gallery) return;
@@ -295,4 +215,7 @@ function initAddListing() {
     // redirect to product page
     window.location.href = `ProductPage.html?id=${newId}`;
   });
+}
+function getListingById(id) {
+  return listings.find(item => item.id === id);
 }
