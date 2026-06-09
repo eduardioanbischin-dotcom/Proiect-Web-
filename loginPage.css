@@ -81,13 +81,49 @@ span.psw {
   padding-top: 16px;
 }
 
-@media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
+@media (max-width: 900px) {
+  form {
+    width: 60%;
+  }
+}
+
+/* Small tablets / large phones */
+@media (max-width: 600px) {
+  form {
+    width: 85%;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  input[type=text],
+  input[type=password] {
+    padding: 10px 14px;
+    font-size: 1rem;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 400px) {
+  form {
+    width: 95%;
   }
 
   .cancelbtn {
     width: 100%;
+    margin-top: 10px;
+  }
+
+  span.psw {
+    float: none;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
   }
 }
