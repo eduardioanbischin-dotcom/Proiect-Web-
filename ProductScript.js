@@ -48,7 +48,6 @@ function buildGallery(listing) {
     slide.appendChild(img);
     slidesContainer.appendChild(slide);
 
-    // open lightbox when clicking a slide image
     img.addEventListener('click', () => openLightbox(i));
 
     const thumb = document.createElement('img');
@@ -78,14 +77,12 @@ function buildGallery(listing) {
   prevBtn.onclick = () => showSlide(current - 1);
   nextBtn.onclick = () => showSlide(current + 1);
 
-  // autoplay
   let autoplay = setInterval(() => showSlide(current + 1), 4000);
   gallery.addEventListener('mouseenter', () => clearInterval(autoplay));
   gallery.addEventListener('mouseleave', () => { autoplay = setInterval(() => showSlide(current + 1), 4000); });
 
   showSlide(0);
 
-  // store images for lightbox
   currentLightboxImages = images;
 }
 
@@ -119,7 +116,6 @@ function lightboxPrev() {
   document.getElementById('lightboxImage').src = currentLightboxImages[lightboxIndex];
 }
 
-// attach lightbox controls and keyboard navigation
 document.addEventListener('click', (e) => {
   const closeBtn = e.target.closest('.lightbox-close');
   if (closeBtn) { closeLightbox(); return; }
@@ -138,9 +134,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // load data then initialize UI
   loadListings().then(() => {
-    // featured = first 3
     renderListings('featured', listings.slice(0, 3));
     renderListings('listingsGrid', listings.slice(0));
     initSearch();
@@ -180,7 +174,6 @@ function initAddListing() {
     const type = document.getElementById('type').value || 'apartament';
     const rooms = Number(document.getElementById('rooms').value) || 1;
 
-    // convert selected files to data URLs
     const images = await Promise.all(selectedFiles.map(file => new Promise((res, rej) => {
       const r = new FileReader();
       r.onload = () => res(r.result);
@@ -188,7 +181,6 @@ function initAddListing() {
       r.readAsDataURL(file);
     })));
 
-    // generate new id
     const maxId = listings.reduce((m, it) => Math.max(m, it.id || 0), 0);
     const newId = maxId + 1;
 
@@ -204,15 +196,12 @@ function initAddListing() {
       description
     };
 
-    // save to localStorage (userListings)
     const user = JSON.parse(localStorage.getItem('userListings') || '[]');
     user.push(newListing);
     localStorage.setItem('userListings', JSON.stringify(user));
 
-    // update in-memory listings so UI refreshes if needed
     listings.push(newListing);
 
-    // redirect to product page
     window.location.href = `ProductPage.html?id=${newId}`;
   });
 }

@@ -1,7 +1,8 @@
 .product-layout {
   display: grid;
-  grid-template-columns: 1fr 250px;
+  grid-template-columns: 1fr 320px;
   align-items: start;
+  gap: 2rem;
 }
 
 .product-main {
@@ -30,7 +31,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  max-width: 70%;
+  max-width: 100%;
 }
 
 .gallery-main {
@@ -41,8 +42,9 @@
 }
 
 .gallery-slides {
-  min-height: 320px;
-  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
 }
 
 .slide {
@@ -51,7 +53,7 @@
 
 .slide img {
   width: 100%;
-  height: 420px;
+  height: 100%;
   object-fit: cover;
   display: block
 }
@@ -66,7 +68,7 @@
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.45);
   color: #fff;
-  border: 0;
+  border: none;
   padding: 0.5rem 0.8rem;
   border-radius: 6px;
   cursor: pointer;
@@ -97,7 +99,6 @@
   border-color: var(--accent)
 }
 
-/* Lightbox */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -236,10 +237,6 @@
 @media(max-width:600px) {
   .card-grid {
     grid-template-columns: 1fr
-  }
-
-  .main-nav {
-    display: none;
   }
 
   .search-form input,
@@ -415,4 +412,73 @@
 #product-gallery,
 #product-summary {
   display: flex;
+}
+
+@media (max-width: 1024px) {
+  .product-layout {
+    grid-template-columns: 1fr 280px;
+    gap: 1.5rem;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .product-layout {
+    grid-template-columns: 1fr;
+  }
+
+
+  .product-gallery,
+  .product-summary,
+  .agent-contact {
+    max-width: 100%;
+    width: 100%;
+  }
+
+
+  .gallery-thumbs {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+  }
+
+  .gallery-thumbs .thumb {
+    flex: 0 0 auto;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .product-summary h1 {
+    font-size: 1.5rem;
+  }
+
+  .product-price {
+    font-size: 1.3rem;
+  }
+
+  .gallery-slides {
+    min-height: 240px;
+  }
+
+  .slide img {
+    height: 280px;
+  }
+
+  .gallery-btn {
+    font-size: 1.2rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .gallery-thumbs .thumb {
+    width: 60px;
+    height: 50px;
+  }
+
+
+  #product,
+  #agent-contact {
+    display: block;
+    max-width: 100%;
+  }
 }
