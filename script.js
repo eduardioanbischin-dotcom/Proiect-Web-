@@ -10,27 +10,25 @@ function loadListings() {
     })
     .then(data => {
       if (!Array.isArray(data)) throw new Error('JSON is not an array');
-      // merge with any user-added listings stored in localStorage
       const user = JSON.parse(localStorage.getItem('userListings') || '[]');
       listings = data.concat(user);
       return listings;
     })
     .catch(err => {
       console.error('Error loading listings:', err);
-      // fallback to user listings if JSON failed
       const user = JSON.parse(localStorage.getItem('userListings') || '[]');
       listings = user;
       return listings;
     });
 }
 
-function formatPrice(v){return v.toLocaleString('ro-RO') + ' €'}
+function formatPrice(v) { return v.toLocaleString('ro-RO') + ' €' }
 
 function getListingById(id) {
   return listings.find(item => item.id == id);
 }
 
-  function renderCard(item){
+function renderCard(item) {
   const div = document.createElement('article');
   div.className = 'card';
   div.innerHTML = `
@@ -45,43 +43,43 @@ function getListingById(id) {
   return div;
 }
 
-function renderListings(targetId, data){
+function renderListings(targetId, data) {
   const container = document.getElementById(targetId);
-  if(!container) return;
+  if (!container) return;
   container.innerHTML = '';
-  if(!data.length) container.innerHTML = '<p>Nu s-au găsit rezultate.</p>';
+  if (!data.length) container.innerHTML = '<p>Nu s-au găsit rezultate.</p>';
   data.forEach(item => container.appendChild(renderCard(item)));
 }
 
-function initSearch(){
+function initSearch() {
   const form = document.getElementById('searchForm');
   if (!form) return;
-  form.addEventListener('submit', e=>{
+  form.addEventListener('submit', e => {
     e.preventDefault();
     const location = document.getElementById('qLocation').value.toLowerCase();
     const type = document.getElementById('qType').value;
     const rooms = Number(document.getElementById('qRooms').value) || 0;
     const min = Number(document.getElementById('qMin').value) || 0;
     const max = Number(document.getElementById('qMax').value) || Infinity;
-    const results = listings.filter(l=>{
+    const results = listings.filter(l => {
       const matchLoc = !location || l.location.toLowerCase().includes(location);
       const matchType = type === 'any' || l.type === type;
       const matchPrice = l.price >= min && l.price <= max;
-      const matchRooms = rooms == 0 || l.rooms ==rooms;
-      return matchLoc && matchType && matchPrice&& matchRooms;
+      const matchRooms = rooms == 0 || l.rooms == rooms;
+      return matchLoc && matchType && matchPrice && matchRooms;
     });
     renderListings('listingsGrid', results);
     window.location.hash = '#listings';
   });
 }
 
-function initSubscribe(){
+function initSubscribe() {
   const f = document.getElementById('subscribeForm');
   if (!f) return;
-  f.addEventListener('submit', e=>{
+  f.addEventListener('submit', e => {
     e.preventDefault();
     const email = document.getElementById('email').value;
-    if(!email) return alert('Introdu o adresă de email.');
+    if (!email) return alert('Introdu o adresă de email.');
     alert('Mulțumim! Te-ai abonat cu: ' + email);
     f.reset();
   });
@@ -89,14 +87,15 @@ function initSubscribe(){
 
 function initProductPage() {
   const titleEl = document.getElementById('productTitle');
-  if (!titleEl){ 
-    console.log('Product title element not found');return;}
+  if (!titleEl) {
+    console.log('Product title element not found'); return;
+  }
 
   const params = new URLSearchParams(window.location.search);
   const id = Number(params.get('id'));
   const listing = getListingById(id) || listings[0];
-  if(!listing) {
-    console.log('Listing not found');return;
+  if (!listing) {
+    console.log('Listing not found'); return;
   }
   buildGallery(listing);
   document.getElementById('productTitle').textContent = listing.title;
@@ -124,17 +123,16 @@ function buildGallery(listing) {
     slide.className = 'slide';
     const img = document.createElement('img');
     img.src = src;
-    img.alt = `${listing.title} - ${i+1}`;
+    img.alt = `${listing.title} - ${i + 1}`;
     slide.appendChild(img);
     slidesContainer.appendChild(slide);
 
-    // open lightbox when clicking a slide image
     img.addEventListener('click', () => openLightbox(i));
 
     const thumb = document.createElement('img');
     thumb.className = 'thumb';
     thumb.src = src;
-    thumb.alt = `Thumb ${i+1}`;
+    thumb.alt = `Thumb ${i + 1}`;
     thumb.dataset.index = i;
     thumb.addEventListener('click', () => showSlide(i));
     thumbsContainer.appendChild(thumb);
@@ -158,14 +156,12 @@ function buildGallery(listing) {
   prevBtn.onclick = () => showSlide(current - 1);
   nextBtn.onclick = () => showSlide(current + 1);
 
-  // autoplay
   let autoplay = setInterval(() => showSlide(current + 1), 4000);
   gallery.addEventListener('mouseenter', () => clearInterval(autoplay));
   gallery.addEventListener('mouseleave', () => { autoplay = setInterval(() => showSlide(current + 1), 4000); });
 
   showSlide(0);
 
-  // store images for lightbox
   currentLightboxImages = images;
 }
 
@@ -199,7 +195,6 @@ function lightboxPrev() {
   document.getElementById('lightboxImage').src = currentLightboxImages[lightboxIndex];
 }
 
-// attach lightbox controls and keyboard navigation
 document.addEventListener('click', (e) => {
   const closeBtn = e.target.closest('.lightbox-close');
   if (closeBtn) { closeLightbox(); return; }
@@ -217,11 +212,9 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') lightboxPrev();
 });
 
-document.addEventListener('DOMContentLoaded', ()=>{
-  // load data then initialize UI
+document.addEventListener('DOMContentLoaded', () => {
   loadListings().then(() => {
-    // featured = first 3
-    renderListings('featured', listings.slice(0,3));
+    renderListings('featured', listings.slice(0, 3));
     renderListings('listingsGrid', listings.slice(0));
     initSearch();
     initSubscribe();
@@ -260,7 +253,6 @@ function initAddListing() {
     const type = document.getElementById('type').value || 'apartament';
     const rooms = Number(document.getElementById('rooms').value) || 1;
 
-    // convert selected files to data URLs
     const images = await Promise.all(selectedFiles.map(file => new Promise((res, rej) => {
       const r = new FileReader();
       r.onload = () => res(r.result);
@@ -268,7 +260,7 @@ function initAddListing() {
       r.readAsDataURL(file);
     })));
 
-    // generate new id
+
     const maxId = listings.reduce((m, it) => Math.max(m, it.id || 0), 0);
     const newId = maxId + 1;
 
@@ -284,15 +276,14 @@ function initAddListing() {
       description
     };
 
-    // save to localStorage (userListings)
+
     const user = JSON.parse(localStorage.getItem('userListings') || '[]');
     user.push(newListing);
     localStorage.setItem('userListings', JSON.stringify(user));
 
-    // update in-memory listings so UI refreshes if needed
+
     listings.push(newListing);
 
-    // redirect to product page
     window.location.href = `ProductPage.html?id=${newId}`;
   });
 }

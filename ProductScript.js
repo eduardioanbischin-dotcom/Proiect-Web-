@@ -14,7 +14,7 @@ function initProductPage() {
   document.getElementById('productType').textContent = listing.type === 'casa' ? 'Casă' : 'Apartament';
   document.title = `ImobiliarePro — ${listing.title}`;
 }
-  function renderCard(item){
+function renderCard(item) {
   const div = document.createElement('product-layout');
   div.className = 'card';
   div.innerHTML = `
@@ -44,7 +44,7 @@ function buildGallery(listing) {
     slide.className = 'slide';
     const img = document.createElement('img');
     img.src = src;
-    img.alt = `${listing.title} - ${i+1}`;
+    img.alt = `${listing.title} - ${i + 1}`;
     slide.appendChild(img);
     slidesContainer.appendChild(slide);
 
@@ -54,7 +54,7 @@ function buildGallery(listing) {
     const thumb = document.createElement('img');
     thumb.className = 'thumb';
     thumb.src = src;
-    thumb.alt = `Thumb ${i+1}`;
+    thumb.alt = `Thumb ${i + 1}`;
     thumb.dataset.index = i;
     thumb.addEventListener('click', () => showSlide(i));
     thumbsContainer.appendChild(thumb);
@@ -137,11 +137,11 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') lightboxPrev();
 });
 
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', () => {
   // load data then initialize UI
   loadListings().then(() => {
     // featured = first 3
-    renderListings('featured', listings.slice(0,3));
+    renderListings('featured', listings.slice(0, 3));
     renderListings('listingsGrid', listings.slice(0));
     initSearch();
     initSubscribe();

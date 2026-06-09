@@ -1,52 +1,85 @@
+root {
+    --bg: #f6f7fb;
+    --accent: #0d6efd;
+    --muted: #6b7280;
+    --card: #ffffff;
+    --max-width: 1100px;
+}
+
 form input,
 form textarea,
 form select,
 form button {
-  display: block;
-  box-sizing: border-box;
-  margin-bottom: 0.75rem;
-  margin-top: 0.6rem;
-  height: 50px;
-  
+
+
+    margin-bottom: 0.75rem;
+    margin-top: 0.6rem;
+    height: 50px;
+
 }
-form{
-    background-color: rgba(250, 235, 215, 0.514);
+
+form {
+    padding: 5px 10px;
+    background: linear-gradient(to right, #0d6dfdc1, #3d8bfd, #66a3ff);
     margin: 10px;
+    opacity: 0.9;
+
+
 }
-form input  {
-    padding: 0.6rem 0.7rem;
+
+form textarea {
+    display: block;
+    resize: none;
+    border-radius: 6px;
+}
+
+form input {
+    /* padding: 0.6rem 0.7rem; */
     border: 1px solid #d6d8df;
     border-radius: 6px;
     width: 400px;
     border-style: double;
 }
-form #Price,
-form #Address {
+
+form #price,
+form #location {
     display: inline-block;
-    width: 200px;
+    width: 500px;
     vertical-align: top;
 }
-form #Bedrooms
-,form select{
-    display :inline-block;
+
+form #rooms,
+form select {
+    display: inline-block;
     width: 200px;
-    
+
 
 }
-form select{
+
+form select {
     padding: 0.6rem 0.7rem;
     border: 1px solid #d6d8df;
     border-radius: 6px;
     border-style: double;
 }
-form #Bedrooms{
+
+form #rooms {
     padding: 0.6rem 0.7rem;
     border: 1px solid #d6d8df;
     border-radius: 6px;
-    
+    border-style: double;
+    width: 200px;
+}
+
+form #price {
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #d6d8df;
+    border-radius: 6px;
+    width: 200px;
     border-style: double;
 }
-form #Description{
+
+form #description {
     padding: 0.6rem 0.7rem;
     border: 1px solid #d6d8df;
     border-radius: 6px;
@@ -54,21 +87,52 @@ form #Description{
     height: 100px;
     max-width: 400px;
     max-height: 200px;
-    border-style: double;   
+    border-style: double;
     text-align: left;
     vertical-align: text-top;
-    
+
 
 
 }
-form #Title{
+
+form #Title {
     padding: 0.6rem 0.7rem;
     border: 1px solid #d6d8df;
     border-radius: 6px;
     width: 200px;
-    border-style: double; 
-    max-width: 400px;  
+    border-style: double;
+    max-width: 400px;
 }
 
-.image-preview{display:flex;gap:0.5rem;margin-top:0.5rem}
-.preview-thumb{width:84px;height:64px;object-fit:cover;border-radius:6px;border:1px solid #ddd}
+.image-preview {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem
+}
+
+.preview-thumb {
+    width: 84px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #ddd
+}
+
+button {
+    background-color: var(--accent);
+    color: white;
+    padding: 0.6rem 0.7rem;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    border-radius: 6px;
+}
+
+form #images {
+    background-color: #d6d8df;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #d6d8df;
+    border-radius: 6px;
+    width: 400px;
+    border-style: double;
+}
