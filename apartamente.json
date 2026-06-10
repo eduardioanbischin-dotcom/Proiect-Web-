@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "title": "Apartament modern, 3 cam",
+    "price": 72000,
+    "location": "București - Floreasca",
+    "type": "apartament",
+    "rooms": 3,
+    "img": "apartamen.jpg",
+    "images": [
+      "apartamen.jpg",
+      "apartamen.jpg"
+    ],
+    "description": "Apartament luminos, potrivit pentru o familie sau pentru investiție."
+  },
+  {
+    "id": 2,
+    "title": "Casă cu grădină",
+    "price": 125000,
+    "location": "Cluj-Napoca - Gheorgheni",
+    "type": "casa",
+    "rooms": 4,
+    "img": "casa.jpg",
+    "images": [
+      "casa.jpg",
+      "casa.jpg"
+    ],
+    "description": "Casă cu curte verde și spații generoase pentru locuit confortabil."
+  },
+  {
+    "id": 3,
+    "title": "Garsonieră centrală",
+    "price": 38000,
+    "location": "Iași - Copou",
+    "type": "apartament",
+    "rooms": 1,
+    "img": "garsoniera.jpg",
+    "images": [
+      "garsoniera.jpg",
+      "garsoniera.jpg"
+    ],
+    "description": "Garsonieră practică, aproape de campusuri și zonele de interes."
+  },
+  {
+    "id": 4,
+    "title": "Vilă spațioasă",
+    "price": 245000,
+    "location": "Timișoara - Giroc",
+    "type": "casa",
+    "rooms": 5,
+    "img": "villa.jpg",
+    "images": [
+      "villa.jpg",
+      "villa.jpg"
+    ],
+    "description": "Vilă elegantă cu living mare, dormitoare multiple și finisaje moderne."
+  },
+  {
+    "id": 5,
+    "title": "Apartament în bloc nou",
+    "price": 98000,
+    "location": "Brașov - Tractorul",
+    "type": "apartament",
+    "rooms": 2,
+    "img": "apartamen.jpg",
+    "images": [
+      "apartamen.jpg",
+      "apartamen.jpg"
+    ],
+    "description": "Locuință într-un ansamblu nou, ideală pentru mutare rapidă."
+  },
+  {
+    "id": 6,
+    "title": "Casă la periferie",
+    "price": 67000,
+    "location": "Constanța - Agigea",
+    "type": "casa",
+    "rooms": 3,
+    "img": "casa.jpg",
+    "images": [
+      "apartamen.jpg",
+      "apartamen.jpg"
+    ],
+    "description": "Casă accesibilă, cu potențial bun pentru renovare sau extindere."
+  }
+]

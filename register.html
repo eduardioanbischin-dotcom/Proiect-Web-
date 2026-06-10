@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImobiliarePro — Login</title>
+    <link rel="stylesheet" href="Header-Style-and-footer.css">
+    <link rel="stylesheet" href="loginPage.css">
+    <script src="loginPage.js"></script>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html">ImobiliarePro</a>
+            <nav class="main-nav">
+                <a href="index.html">Acasă</a>
+                <a href="Buy.html">Anunțuri</a>
+                <a href="#contact">Contact</a>
+                <a href="add-listing.html">Adaugă anunț</a>
+            </nav>
+        </div>
+        <form action="action_page.php" method="post">
+            <div class="imgcontainer">
+                <img src="casa.jpg" alt="Avatar" class="avatar">
+                <h2 class="label">Create Account</h2>
+                <p>Welcome to our platform!</p>
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+                <label for="uname"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="uname" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" id="password" required>
+                <label for="psw"><b>Confirm Password</b></label>
+                <input type="password" placeholder="Confirm Password" name="confirm_psw" id="confirm_password" required>
+                <input id="ShowPassword" onclick="showPassword()" type="checkbox">Show Password</input>
+
+
+                <button type="submit">Create Account</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+            <div class="container" style="background-color:#f1f1f1">
+                >
+                <span class="psw">Already have an account? <a href="loginPage.html">Login</a></span>
+            </div>
+        </form>
+    </header>
+</body>
+
+</html>

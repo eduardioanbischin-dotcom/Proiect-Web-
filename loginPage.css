@@ -1,0 +1,129 @@
+root {
+  --bg: #f6f7fb;
+  --accent: #0d6efd;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --max-width: 1100px;
+}
+
+form {
+  border: 3px solid #f1f1f1;
+  width: 30%;
+  margin: auto;
+}
+
+.imgcontainer .label {
+  margin-top: 15px
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 25px 0 12px 0;
+}
+
+input[type=text],
+input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+
+button {
+  background-color: var(--accent);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 6px;
+}
+
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.container span {
+  margin: 0 15px;
+
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+@media (max-width: 900px) {
+  form {
+    width: 60%;
+  }
+}
+
+/* Small tablets / large phones */
+@media (max-width: 600px) {
+  form {
+    width: 85%;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  input[type=text],
+  input[type=password] {
+    padding: 10px 14px;
+    font-size: 1rem;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 400px) {
+  form {
+    width: 95%;
+  }
+
+  .cancelbtn {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  span.psw {
+    float: none;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
+}

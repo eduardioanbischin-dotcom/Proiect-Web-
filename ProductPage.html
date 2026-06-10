@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ro">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ImobiliarePro — Anunț</title>
+    <link rel="stylesheet" href="product.css">
+    <link rel="stylesheet" href="Header-Style-and-footer.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html">ImobiliarePro</a>
+            <nav class="main-nav">
+                <a href="index.html">Acasă</a>
+                <a href="Buy.html">Anunțuri</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="add-listing.html">Adaugă anunț</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Detaliu anunț</h1>
+            <p class="lead">Vezi informațiile complete și contact pentru acest anunț.</p>
+        </div>
+    </section>
+
+    <main class="container product-page">
+        <nav class="breadcrumbs">
+            <a href="Buy.html">Listări</a> › <span id="crumbTitle">Detaliu anunț</span>
+        </nav>
+
+        <section class="product-layout">
+            <div id="productmain" class="product-main">
+
+                <div id="productGallery" class="product-gallery">
+                    <div class="gallery-main">
+                        <button class="gallery-btn prev" aria-label="Previous">‹</button>
+                        <div class="gallery-slides" id="gallerySlides"></div>
+                        <button class="gallery-btn next" aria-label="Next">›</button>
+                    </div>
+                    <div id="galleryThumbs" class="gallery-thumbs"></div>
+                </div>
+
+                <div class="product-summary">
+                    <p class="product-kicker"></p>
+                    <h1 id="productTitle"></h1>
+                    <div id="productPrice" class="product-price"></div>
+                    <div class="product-tags">
+                        <span id="productRooms" class="tag"></span>
+                        <span id="productType" class="tag"></span>
+                    </div>
+                    <p id="productLocation" class="product-location"></p>
+                    <p id="productDescription" class="product-description"></p>
+
+
+                </div>
+            </div>
+            <div class=" agent-contact">
+                <h3>Contact agent</h3>
+                <img id="agentPhoto" src="" alt="Agent photo" class="agent-photo">
+                <div id=agentInfo class="agent-info">
+                    <p id="agent-name" class="agent-name">ion</p>
+                    <p id="agent position" class="agent-position">job</p>
+                </div>
+                <p id="agentPhone" class="agent-phone"></p>
+                <p id="agentEmail" class="agent-email"></p>
+                <button id="visitButton" class="btn">Schedule a visit</button>
+                <button id="contactAgent" class="btn">Contact Agent</button>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button class="lightbox-close" aria-label="Close">✕</button>
+        <button class="lightbox-prev" aria-label="Previous">‹</button>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="">
+        </div>
+        <button class="lightbox-next" aria-label="Next">›</button>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <small>© 2026 ImobiliarePro — Toate drepturile rezervate</small>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
