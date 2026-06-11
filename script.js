@@ -22,12 +22,28 @@ function normalizeListing(item) {
     status: item.status || 'AVAILABLE'
   };
 }
-
+function loadListingJson(){
+  return fetch('apartamente.json')
+    .then(resp => {
+      if (!resp.ok) throw new Error('Could not load apartamente.json');
+      return resp.json();
+    })
+    .then(data => {
+      if (!Array.isArray(data)) throw new Error('JSON is not an array');
+      listings = data;
+      return listings;
+    })
+    .catch(err => {
+      console.error('Error loading listings:', err);
+      listings = [];
+      return listings;
+    });
+}
 function loadListings() {
   return fetch(APARTMENT_API_URL)
     .then(resp => {
       if (!resp.ok) throw new Error('Could not load apartment data from API');
-      return resp.json();
+      return resp.json(); 
     })
     .then(data => {
       if (!Array.isArray(data)) throw new Error('API response is not an array');
@@ -36,9 +52,10 @@ function loadListings() {
     })
     .catch(err => {
       console.error('Error loading listings:', err);
-      listings = [];
+      listings = loadListingJson();
       return listings;
     });
+  
 }
 
 function formatPrice(v) { return Number(v || 0).toLocaleString('ro-RO') + ' €' }

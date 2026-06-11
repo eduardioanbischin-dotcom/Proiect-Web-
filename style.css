@@ -279,7 +279,7 @@ body {
   border-color: var(--accent)
 }
 
-/* Lightbox */
+
 .lightbox {
   position: fixed;
   inset: 0;
@@ -399,6 +399,7 @@ body {
   font-size: 0.9rem;
   font-weight: 600;
 }
+
 
 @media(max-width:900px) {
   .card-grid {
