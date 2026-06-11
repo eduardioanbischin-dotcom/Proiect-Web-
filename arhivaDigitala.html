@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ImobiliarePro — Anunțuri</title>
+    <title>ImobiliarePro — Arhivă digitală</title>
     <link rel="stylesheet" href="Header-Style-and-footer.css">
     <link rel="stylesheet" href="arhivaDigitala.css">
 </head>
@@ -12,36 +12,215 @@
 <body>
     <header class="site-header">
         <div class="container header-inner">
-            <a class="logo" href="#">ImobiliarePro</a>
+            <a class="logo" href="index.html">ImobiliarePro</a>
             <nav class="main-nav">
                 <a href="index.html">Acasă</a>
                 <a href="Buy.html">Anunțuri</a>
                 <a href="index.html#contact">Contact</a>
-                <a href="add-listing.html">Adauga anunț</a>
+                <a href="add-listing.html">Adaugă anunț</a>
             </nav>
         </div>
     </header>
-    <div class="container-center">
-        <h1>Arhiva Digitală</h1>
-        <p>Bine ai venit în arhiva digitală!</p>
-        <div class="data-loader">
-            <label for="images">Selectează buletin</label>
-            <input type="file" id="images" name="images" accept="image/*" multiple />
-            <div id="imagePreview" class="image-preview"></div>
-            <label for="terms">
-                <h1>Termeni și Condiții</h1>
-                <p>Datele personale nu vor fi folosite in alte scopuri decat cele pentru stabiliera de contracte.
-                    Acestea sunt criptate si sigure.</p>
-                <h2>Politica de Utilizare a Datelor</h2>
-                <p>Datele colectate sunt utilizate exclusiv pentru procesarea și încheierea contractelor de
-                    vânzare/cumpărare a imobilelor.</p>
-                <p>Prin acceptarea termenilor și condițiilor, sunteți de acord cu politicile noastre de utilizare a
-                    datelor.</p>
-                <input type="checkbox" id="terms" name="terms" required> Accept termenii și condițiile
-            </label>
-            <button id="loadDataBtn" class="btn">Încarcă date</button>
+
+    <main class="archive-shell">
+        <section class="archive-hero container">
+            <div class="hero-copy">
+                <span class="eyebrow">Documente și conformitate</span>
+                <h1>Arhivă digitală cu termeni, condiții și încărcare de documente</h1>
+                <p>
+                    În această secțiune poți încărca documente de identitate sau acte relevante și poți consulta
+                    condițiile de utilizare, politica de prelucrare a datelor și regulile de arhivare.
+                </p>
+            </div>
+            <div class="hero-panel">
+                <div class="stat">
+                    <strong>Confidențial</strong>
+                    <span>Datele sunt tratate strict pentru validare și contractare.</span>
+                </div>
+                <div class="stat">
+                    <strong>Trasabil</strong>
+                    <span>Documentele încărcate sunt păstrate organizat în fluxul intern.</span>
+                </div>
+                <div class="stat">
+                    <strong>Rapid</strong>
+                    <span>Încarci fișierele și vezi imediat previzualizarea lor.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="container archive-layout">
+            <article class="archive-card uploader-card">
+                <div class="section-heading">
+                    <span class="section-tag">Încărcare documente</span>
+                    <h2>Adaugă fișierele necesare</h2>
+                </div>
+                <p class="section-lead">
+                    Poți încărca o carte de identitate, un extras sau alte documente solicitate în procesul de arhivare.
+                </p>
+
+                <div class="upload-zone">
+                    <label class="upload-label" for="images">Selectează documentele</label>
+                    <input type="file" id="images" name="images" accept="image/*,.pdf" multiple />
+                    <p class="upload-hint">Sunt acceptate imagini și PDF-uri. Poți selecta mai multe fișiere odată.</p>
+                </div>
+
+                <div class="preview-header">
+                    <h3>Previzualizare</h3>
+                    <span id="fileCount">0 fișiere selectate</span>
+                </div>
+                <div id="imagePreview" class="image-preview" aria-live="polite"></div>
+
+                <div class="agreement-box">
+                    <input type="checkbox" id="terms" name="terms" required />
+                    <label for="terms">Confirm că am citit și accept termenii și condițiile de arhivare.</label>
+                </div>
+
+                <button id="loadDataBtn" class="btn" type="button">Încarcă documentele</button>
+                <p class="fine-print">Butoanele și previzualizarea rămân active local, fără a pierde fișierele selectate.</p>
+            </article>
+
+            <aside class="archive-card legal-card">
+                <div class="section-heading">
+                    <span class="section-tag">Termeni și condiții</span>
+                    <h2>Reguli de utilizare și protecția datelor</h2>
+                </div>
+
+                <div class="legal-block">
+                    <h3>1. Scopul arhivei</h3>
+                    <p>
+                        Arhiva digitală este folosită pentru colectarea, verificarea și organizarea documentelor necesare
+                        proceselor de vânzare, închiriere și administrare a proprietăților.
+                    </p>
+                </div>
+
+                <div class="legal-block">
+                    <h3>2. Tipuri de date colectate</h3>
+                    <ul>
+                        <li>Date de identificare: nume, prenume, serie și număr act.</li>
+                        <li>Date de contact: email, telefon, adresă de corespondență.</li>
+                        <li>Documente încărcate: imagini, fișiere PDF și alte acte justificative.</li>
+                        <li>Date tehnice: ora încărcării, tipul fișierului și dimensiunea acestuia.</li>
+                    </ul>
+                </div>
+
+                <div class="legal-block">
+                    <h3>3. Utilizarea documentelor</h3>
+                    <p>
+                        Documentele sunt utilizate exclusiv pentru verificarea identității, pregătirea contractelor și
+                        arhivarea internă. Nu sunt folosite pentru alte scopuri comerciale fără consimțământ explicit.
+                    </p>
+                </div>
+
+                <div class="legal-block">
+                    <h3>4. Securitate și păstrare</h3>
+                    <p>
+                        Fișierele sunt tratate cu măsuri rezonabile de securitate. Accesul este limitat la persoanele
+                        autorizate, iar păstrarea se face doar pe perioada necesară îndeplinirii scopului declarat.
+                    </p>
+                </div>
+
+                <div class="legal-block">
+                    <h3>5. Drepturile utilizatorului</h3>
+                    <p>
+                        Poți solicita acces, rectificare, restricționare, ștergere sau exportul datelor, în limitele
+                        legislației aplicabile și ale obligațiilor contractuale.
+                    </p>
+                </div>
+
+                <div class="legal-block">
+                    <h3>6. Responsabilități</h3>
+                    <p>
+                        Utilizatorul confirmă că documentele încărcate îi aparțin sau că are dreptul legal de a le transmite.
+                        Este interzisă încărcarea de fișiere false, incomplete sau care încalcă drepturile altor persoane.
+                    </p>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <small>© 2026 ImobiliarePro — Arhivă digitală securizată pentru documente și conformitate</small>
         </div>
-    </div>
+    </footer>
+
+    <script>
+        (function () {
+            const imagesInput = document.getElementById('images');
+            const preview = document.getElementById('imagePreview');
+            const fileCount = document.getElementById('fileCount');
+            const termsCheckbox = document.getElementById('terms');
+            const loadButton = document.getElementById('loadDataBtn');
+
+            let selectedFiles = [];
+
+            function renderPreview() {
+                preview.innerHTML = '';
+
+                if (fileCount) {
+                    fileCount.textContent = `${selectedFiles.length} fișiere selectate`;
+                }
+
+                if (!selectedFiles.length) {
+                    preview.innerHTML = '<p class="empty-state">Nu ai selectat încă niciun fișier.</p>';
+                    return;
+                }
+
+                selectedFiles.forEach((file) => {
+                    const card = document.createElement('div');
+                    card.className = 'preview-card';
+
+                    const name = document.createElement('strong');
+                    name.textContent = file.name;
+
+                    const meta = document.createElement('span');
+                    meta.textContent = `${Math.round(file.size / 1024)} KB • ${file.type || 'unknown'}`;
+
+                    if (file.type && file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+                        const img = document.createElement('img');
+                        img.alt = file.name;
+                        img.className = 'preview-thumb';
+                        reader.onload = () => {
+                            img.src = reader.result;
+                        };
+                        reader.readAsDataURL(file);
+                        card.appendChild(img);
+                    } else {
+                        const badge = document.createElement('div');
+                        badge.className = 'file-badge';
+                        badge.textContent = file.type === 'application/pdf' ? 'PDF' : 'FILE';
+                        card.appendChild(badge);
+                    }
+
+                    card.appendChild(name);
+                    card.appendChild(meta);
+                    preview.appendChild(card);
+                });
+            }
+
+            imagesInput.addEventListener('change', (event) => {
+                selectedFiles = Array.from(event.target.files || []);
+                renderPreview();
+            });
+
+            loadButton.addEventListener('click', () => {
+                if (!termsCheckbox.checked) {
+                    alert('Trebuie să accepți termenii și condițiile înainte de încărcare.');
+                    return;
+                }
+
+                if (!selectedFiles.length) {
+                    alert('Selectează cel puțin un fișier înainte de încărcare.');
+                    return;
+                }
+
+                alert(`Au fost pregătite ${selectedFiles.length} fișiere pentru încărcare.`);
+            });
+
+            renderPreview();
+        })();
+    </script>
 </body>
 
 </html>

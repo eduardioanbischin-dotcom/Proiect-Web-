@@ -1,132 +1,212 @@
 :root {
-    --bg: #f6f7fb;
-    --accent: #b90dfd;
-    --muted: #6b7280;
-    --card: #ffffff;
-    --max-width: 1100px;
+  --bg: #f6f7fb;
+  --accent: #b90dfd;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --line: #e6e7eb;
+  --max-width: 1100px;
 }
 
-form {
-    padding: 10px;
-    background: linear-gradient(to right, #b90dfd, #d85bff, #e68aff);
-    margin: 10px;
-    opacity: 0.95;
-    border-radius: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+* {
+  box-sizing: border-box;
 }
 
-form input,
-form textarea,
-form select {
-    margin: 0;
-    height: 45px;
-    border: 1px solid #d6d8df;
-    border-radius: 6px;
-    border-style: double;
-    padding: 0.6rem 0.7rem;
-    width: 100%;
-}
-form select {
-    margin-bottom: 0.5rem;
+html,
+body {
+  height: 100%;
 }
 
-form textarea {
-    height: 100px;
-    resize: none;
+body {
+  font-family: Segoe UI, Roboto, Arial, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: #111;
 }
 
-form #Title {
-    flex: 1 1 200px;
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-form #location {
-    flex: 1 1 300px;
+.hero {
+  background: linear-gradient(90deg, #eef2ff 0%, #ffffff 100%);
+  padding: 2.5rem 0;
 }
 
-form #price {
-    flex: 1 1 150px;
-    margin-bottom: 0.5rem;
-
+.hero-kicker {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.78rem;
 }
 
-form #rooms {
-    flex: 1 1 120px;
+.hero h1 {
+  margin: 0.5rem 0 0;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
 }
 
-form select {
-    flex: 1 1 150px;
+.lead {
+  color: var(--muted);
+  margin-top: 0.5rem;
+  max-width: 70ch;
+  line-height: 1.6;
 }
 
-form #description {
-    flex: 1 1 100%;
-    height: 120px;
+.form-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-form #images {
-    flex: 1 1 100%;
-    background-color: #d6d8df;
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(20, 20, 50, 0.06);
+  padding: 1.25rem;
 }
 
-button {
-     background: linear-gradient(to left, #b90dfd, #d85bff, #e68aff);
-    color: white;
-    padding: 0.7rem;
-    border: 1px solid #d6d8df;
-    cursor: pointer;
-    border-radius: 6px;
-    flex: 1 1 150px;
-    max-width: 200px;
-    transition: transform 0.3s ease-in-out;
-    
-}
-button:active {
-    scale:1.02;
-}
-button:hover {
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.section-head h2 {
+  margin: 0;
 }
 
+.section-head p,
+.field-note,
+.tip-box p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.listing-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field-full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  font-weight: 600;
+  color: #111;
+}
+
+.listing-form input,
+.listing-form textarea,
+.listing-form select {
+  width: 100%;
+  border: 1px solid #d6d8df;
+  border-radius: 6px;
+  padding: 0.75rem 0.8rem;
+  background: #fff;
+  color: #111;
+  font: inherit;
+}
+
+.listing-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+#images {
+  padding: 0.6rem 0;
+}
+
+.field-note {
+  margin: 0;
+  font-size: 0.92rem;
+}
 
 .image-preview {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  min-height: 84px;
 }
 
 .preview-thumb {
-    width: 84px;
-    height: 64px;
-    object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid #ddd;
+  width: 84px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ddd;
 }
 
-@media (max-width: 768px) {
-    form {
-        flex-direction: column;
-    }
-
-    button {
-        width: 40%;
-        max-height: 50px;
-    }
+.form-actions {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 0.25rem;
 }
 
-@media (max-width: 480px) {
+.btn-sub {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
 
-    form input,
-    form select,
-    form textarea {
-        font-size: 0.9rem;
-    }
+.btn-sub:hover {
+  background-color: #720b9a;
+  transform: translateY(-1px);
+}
 
-    form #price,
-    form #rooms,
-    form select {
-        margin-bottom: 1rem;
-    }
+.info-card {
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+}
 
+.tip-box {
+  padding: 0.95rem;
+  border-radius: 8px;
+  background: #fafafa;
+  border: 1px solid #edf0f5;
+}
+
+.tip-box strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.site-footer {
+  padding: 1.25rem 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .form-layout,
+  .listing-form {
+    grid-template-columns: 1fr;
+  }
+
+  .field-full {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .container {
+    padding: 0.75rem;
+  }
 }

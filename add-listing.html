@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 
 <head>
     <meta charset="UTF-8">
@@ -15,8 +15,8 @@
         <div class="container header-inner">
             <a class="logo" href="index.html">ImobiliarePro</a>
             <nav class="main-nav">
-                <a href="Listing.html">Acasă</a>
-                <a href="index.html">Anunțuri</a>
+                <a href="index.html">Acasă</a>
+                <a href="Buy.html">Anunțuri</a>
                 <a href="index.html#contact">Contact</a>
                 <a href="add-listing.html">Adaugă anunț</a>
             </nav>
@@ -24,33 +24,103 @@
     </header>
 
     <main>
-        <section class="container listings">
-            <h2>Adaugă anunț</h2>
-            <form id="addListingForm" class="Form">
-                <input id="title" type="text" placeholder="Titlu anunț" required>
-                <textarea id="description" placeholder="Descriere" required></textarea>
-                <div>
-                    <input id="price" type="number" placeholder="Preț (€)" min="0" required>
-                    <input id="location" type="text" placeholder="Adresă" required>
+        <section class="hero form-hero">
+            <div class="container">
+                <span class="hero-kicker">Publicare anunț</span>
+                <h1>Adaugă o locuință</h1>
+                <p class="lead">Completează datele esențiale, adaugă imaginile și publică anunțul în câțiva pași.</p>
+            </div>
+        </section>
+
+        <section class="container form-layout">
+            <article class="form-card">
+                <div class="section-head">
+                    <h2>Detalii anunț</h2>
+                    <p>Informațiile de mai jos apar direct pe pagina anunțului după publicare.</p>
                 </div>
-                <div>
-                    <select id="type">
-                        <option value="">Tip Proprietate</option>
-                        <option value="apartament">Apartament</option>
-                        <option value="casa">Casă</option>
-                    </select>
-                     <select id="selling-type">
-                        <option value="">Tip de Vanzare</option>
-                        <option value="De vânzare">De vânzare</option>
-                        <option value="De închiriat">De închiriat</option>
-                        <option value="De închiriat/De vânzare">De închiriat/De vânzare</option>
-                    </select>
-                    <input id="rooms" type="number" placeholder="Camere" min="1" required>
+
+                <form id="addListingForm" class="listing-form">
+                    <div class="field field-full">
+                        <label for="title">Titlu anunț</label>
+                        <input id="title" type="text" placeholder="Ex: Apartament modern, 3 camere" required>
+                    </div>
+
+                    <div class="field field-full">
+                        <label for="description">Descriere</label>
+                        <textarea id="description" placeholder="Descrie spațiul, avantajele și dotările" required></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label for="price">Preț (€)</label>
+                        <input id="price" type="number" placeholder="Ex: 72000" min="0" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="location">Adresă / Zonă</label>
+                        <input id="location" type="text" placeholder="Ex: București - Floreasca" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="type">Tip proprietate</label>
+                        <select id="type">
+                            <option value="">Tip Proprietate</option>
+                            <option value="apartament">Apartament</option>
+                            <option value="casa">Casă</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="selling-type">Tip de vânzare</label>
+                        <select id="selling-type">
+                            <option value="">Tip de Vanzare</option>
+                            <option value="De vânzare">De vânzare</option>
+                            <option value="De închiriat">De închiriat</option>
+                            <option value="De închiriat/De vânzare">De închiriat/De vânzare</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="rooms">Camere</label>
+                        <input id="rooms" type="number" placeholder="Ex:3" min="1" required>
+                    </div>
+
+                    <div class="field field-full">
+                        <label for="images">Imagini</label>
+                        <input type="file" id="images" name="images" accept="image/*" multiple />
+                        <p class="field-note">Poți selecta mai multe poze pentru același anunț.</p>
+                    </div>
+
+                    <div class="field field-full">
+                        <div id="imagePreview" class="image-preview"></div>
+                    </div>
+
+                    <div class="field field-full form-actions">
+                        <button class="btn-sub" type="submit">Publică anunț</button>
+                    </div>
+                </form>
+            </article>
+
+            <aside class="form-card info-card">
+                <div class="section-head">
+                    <h2>Recomandări rapide</h2>
+                    <p>Un anunț clar și ordonat arată mai bine și se citește mai ușor.</p>
                 </div>
-                <input type="file" id="images" name="images" accept="image/*" multiple />
-                <div id="imagePreview" class="image-preview"></div>
-                <button class="btn-sub" type="submit">Publică anunț</button>
-            </form>
+
+                <div class="tip-box">
+                    <strong>Tip</strong>
+                    <p>Folosește un titlu scurt și descriptiv, cu camerele și zona în care se află locuința.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Imagini</strong>
+                    <p>Prima imagine este cea afișată în carduri și pe pagina detaliului anunțului.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Descriere</strong>
+                    <p>Menționează dotările, orientarea, etajul și orice detaliu care ajută la decizia de cumpărare.</p>
+                </div>
+            </aside>
         </section>
     </main>
 
