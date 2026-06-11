@@ -27,10 +27,15 @@ public class ApartmentService {
 
     public Apartment update(Long id, Apartment updated) {
         Apartment existing = getById(id);
-        existing.setName(updated.getName());
-        existing.setAddress(updated.getAddress());
-        existing.setFloor(updated.getFloor());
-        existing.setRentPrice(updated.getRentPrice());
+        existing.setTitle(updated.getTitle());
+        existing.setDescription(updated.getDescription());
+        existing.setPrice(updated.getPrice());
+        existing.setLocation(updated.getLocation());
+        existing.setType(updated.getType());
+        existing.setRooms(updated.getRooms());
+        existing.setSellingType(updated.getSellingType());
+        existing.setMainImage(updated.getMainImage());
+        existing.setImages(updated.getImages());
         existing.setStatus(updated.getStatus());
         return apartmentRepository.save(existing);
     }

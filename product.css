@@ -45,6 +45,8 @@
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
+  max-height: 420px;
+  box-shadow: 0 10px 24px rgba(0,0,0,1);
 }
 
 .slide {
@@ -245,7 +247,6 @@
   }
 }
 
-/* Gallery / slideshow */
 .product-gallery {
   display: inline-block;
   gap: 1rem;
@@ -322,6 +323,13 @@
 .gallery-thumbs .thumb.active {
   opacity: 1;
   border-color: var(--accent)
+}
+label{
+  font-weight: 600;
+
+}
+ .agent-info p{
+  margin-top: 0px;
 }
 
 @media(max-width:900px) {
@@ -413,7 +421,13 @@
 #product-summary {
   display: flex;
 }
-
+#agentPhoto {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(20, 20, 50, 0.1);
+}
 @media (max-width: 1024px) {
   .product-layout {
     grid-template-columns: 1fr 280px;

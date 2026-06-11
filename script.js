@@ -2,27 +2,46 @@ let listings = [];
 let currentLightboxImages = [];
 let lightboxIndex = 0;
 
+const APARTMENT_API_URL = 'http://localhost:8080/api/apartments';
+
+function normalizeListing(item) {
+  const images = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
+  const mainImage = item.mainImage || images[0] || 'apartamen.jpg';
+
+  return {
+    id: item.id,
+    title: item.title || 'Fără titlu',
+    description: item.description || '',
+    price: Number(item.price) || 0,
+    location: item.location || '',
+    type: item.type || 'apartament',
+    rooms: Number(item.rooms) || 0,
+    sellingType: item.sellingType || '',
+    mainImage,
+    images: images.length ? images : [mainImage],
+    status: item.status || 'AVAILABLE'
+  };
+}
+
 function loadListings() {
-  return fetch('apartamente.json')
+  return fetch(APARTMENT_API_URL)
     .then(resp => {
-      if (!resp.ok) throw new Error('Could not load apartamente.json');
+      if (!resp.ok) throw new Error('Could not load apartment data from API');
       return resp.json();
     })
     .then(data => {
-      if (!Array.isArray(data)) throw new Error('JSON is not an array');
-      const user = JSON.parse(localStorage.getItem('userListings') || '[]');
-      listings = data.concat(user);
+      if (!Array.isArray(data)) throw new Error('API response is not an array');
+      listings = data.map(normalizeListing);
       return listings;
     })
     .catch(err => {
       console.error('Error loading listings:', err);
-      const user = JSON.parse(localStorage.getItem('userListings') || '[]');
-      listings = user;
+      listings = [];
       return listings;
     });
 }
 
-function formatPrice(v) { return v.toLocaleString('ro-RO') + ' €' }
+function formatPrice(v) { return Number(v || 0).toLocaleString('ro-RO') + ' €' }
 
 function getListingById(id) {
   return listings.find(item => item.id == id);
@@ -33,7 +52,7 @@ function renderCard(item) {
   div.className = 'card';
   div.innerHTML = `
     <a href="ProductPage.html?id=${item.id}">
-      <img src="${item.img}" alt="${item.title}">
+      <img src="${item.mainImage || item.images?.[0] || 'apartamen.jpg'}" alt="${item.title}">
     </a>
     <div class="card-body">
       <div class="price">${formatPrice(item.price)}</div>
@@ -104,6 +123,9 @@ function initProductPage() {
   document.getElementById('productDescription').textContent = listing.description;
   document.getElementById('productRooms').textContent = `${listing.rooms} camere`;
   document.getElementById('productType').textContent = listing.type === 'casa' ? 'Casă' : 'Apartament';
+  document.getElementById('productSellingType').textContent = listing.sellingType || 'N/A';
+  const crumbTitle = document.getElementById('crumbTitle');
+  if (crumbTitle) crumbTitle.textContent = listing.title;
   document.title = `ImobiliarePro — ${listing.title}`;
 }
 
@@ -115,7 +137,7 @@ function buildGallery(listing) {
   slidesContainer.innerHTML = '';
   thumbsContainer.innerHTML = '';
 
-  const images = (Array.isArray(listing.images) && listing.images.length) ? listing.images : (listing.img ? [listing.img] : []);
+  const images = (Array.isArray(listing.images) && listing.images.length) ? listing.images : (listing.mainImage ? [listing.mainImage] : []);
   if (!images.length) return;
 
   images.forEach((src, i) => {
@@ -252,6 +274,7 @@ function initAddListing() {
     const location = document.getElementById('location').value.trim();
     const type = document.getElementById('type').value || 'apartament';
     const rooms = Number(document.getElementById('rooms').value) || 1;
+    const sellingType = document.getElementById('selling-type').value || '';
 
     const images = await Promise.all(selectedFiles.map(file => new Promise((res, rej) => {
       const r = new FileReader();
@@ -260,30 +283,38 @@ function initAddListing() {
       r.readAsDataURL(file);
     })));
 
-
-    const maxId = listings.reduce((m, it) => Math.max(m, it.id || 0), 0);
-    const newId = maxId + 1;
-
-    const newListing = {
-      id: newId,
+    const payload = {
       title,
+      description,
       price,
       location,
       type,
       rooms,
-      img: images.length ? images[0] : '',
-      images: images,
-      description
+      sellingType,
+      mainImage: images.length ? images[0] : '',
+      images,
+      status: 'AVAILABLE'
     };
 
+    try {
+      const response = await fetch(APARTMENT_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
 
-    const user = JSON.parse(localStorage.getItem('userListings') || '[]');
-    user.push(newListing);
-    localStorage.setItem('userListings', JSON.stringify(user));
+      if (!response.ok) {
+        throw new Error('Nu s-a putut salva anunțul în baza de date.');
+      }
 
-
-    listings.push(newListing);
-
-    window.location.href = `ProductPage.html?id=${newId}`;
+      const created = normalizeListing(await response.json());
+      listings.unshift(created);
+      window.location.href = `ProductPage.html?id=${created.id}`;
+    } catch (error) {
+      console.error(error);
+      alert('Anunțul nu a putut fi salvat în baza de date. Verifică dacă backend-ul rulează.');
+    }
   });
 }

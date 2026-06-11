@@ -29,18 +29,24 @@
             </div>
 
             <div class="container">
+
                 <label for="uname"><b>Username</b></label>
                 <input type="text" placeholder="Enter Username" name="uname" required>
                 <label for="uname"><b>Email</b></label>
                 <input type="text" placeholder="Enter Email" name="uname" required>
+                <label for="userType"><b>User Type</b></label>
+                <select id="userType" name="userType" required>
+                    <option value="">Select Type</option>
+                    <option value="buyer">Buyer</option>
+                    <option value="seller">Seller</option>
 
+                </select>
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" id="password" required>
                 <label for="psw"><b>Confirm Password</b></label>
                 <input type="password" placeholder="Confirm Password" name="confirm_psw" id="confirm_password" required>
                 <input id="ShowPassword" onclick="showPassword()" type="checkbox">Show Password</input>
-
-
+                
                 <button type="submit">Create Account</button>
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Remember me

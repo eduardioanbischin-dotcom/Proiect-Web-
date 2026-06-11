@@ -7,6 +7,7 @@
     "type": "apartament",
     "rooms": 3,
     "img": "apartamen.jpg",
+    "sellingType": "De vânzare",
     "images": [
       "apartamen.jpg",
       "apartamen.jpg"
@@ -21,6 +22,7 @@
     "type": "casa",
     "rooms": 4,
     "img": "casa.jpg",
+    "sellingType": "De vânzare",
     "images": [
       "casa.jpg",
       "casa.jpg"
@@ -35,6 +37,7 @@
     "type": "apartament",
     "rooms": 1,
     "img": "garsoniera.jpg",
+    "sellingType": "De vânzare",
     "images": [
       "garsoniera.jpg",
       "garsoniera.jpg"
@@ -49,6 +52,7 @@
     "type": "casa",
     "rooms": 5,
     "img": "villa.jpg",
+    "sellingType": "De vânzare",
     "images": [
       "villa.jpg",
       "villa.jpg"
@@ -63,6 +67,7 @@
     "type": "apartament",
     "rooms": 2,
     "img": "apartamen.jpg",
+    "sellingType": "De vânzare",
     "images": [
       "apartamen.jpg",
       "apartamen.jpg"
@@ -72,11 +77,12 @@
   {
     "id": 6,
     "title": "Casă la periferie",
-    "price": 67000,
+    "price":300,
     "location": "Constanța - Agigea",
     "type": "casa",
     "rooms": 3,
     "img": "casa.jpg",
+    "sellingType": "De închiriat",
     "images": [
       "apartamen.jpg",
       "apartamen.jpg"

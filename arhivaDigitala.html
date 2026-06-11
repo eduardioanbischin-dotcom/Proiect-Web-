@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ro">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ImobiliarePro — Anunțuri</title>
+    <link rel="stylesheet" href="Header-Style-and-footer.css">
+    <link rel="stylesheet" href="arhivaDigitala.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="#">ImobiliarePro</a>
+            <nav class="main-nav">
+                <a href="index.html">Acasă</a>
+                <a href="Buy.html">Anunțuri</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="add-listing.html">Adauga anunț</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container-center">
+        <h1>Arhiva Digitală</h1>
+        <p>Bine ai venit în arhiva digitală!</p>
+        <div class="data-loader">
+            <label for="images">Selectează buletin</label>
+            <input type="file" id="images" name="images" accept="image/*" multiple />
+            <div id="imagePreview" class="image-preview"></div>
+            <label for="terms">
+                <h1>Termeni și Condiții</h1>
+                <p>Datele personale nu vor fi folosite in alte scopuri decat cele pentru stabiliera de contracte.
+                    Acestea sunt criptate si sigure.</p>
+                <h2>Politica de Utilizare a Datelor</h2>
+                <p>Datele colectate sunt utilizate exclusiv pentru procesarea și încheierea contractelor de
+                    vânzare/cumpărare a imobilelor.</p>
+                <p>Prin acceptarea termenilor și condițiilor, sunteți de acord cu politicile noastre de utilizare a
+                    datelor.</p>
+                <input type="checkbox" id="terms" name="terms" required> Accept termenii și condițiile
+            </label>
+            <button id="loadDataBtn" class="btn">Încarcă date</button>
+        </div>
+    </div>
+</body>
+
+</html>
